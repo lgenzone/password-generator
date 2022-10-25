@@ -2,6 +2,21 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+//retuen a random number ranging from min to max
+function randomInt(min, max) {
+    // if max is not defined, assume range from 0 to min
+    if (!max) {
+        max = min
+        min = 0 
+    }
+    var rando = Math.random()
+    return Math.floor(min * (1 - rando) + rando * max)
+}
+
+function grabRandomItem(list) {
+    return list[randomInt(0, list.length)]
+}
+
 function generatePassword() {
 
 var userInput = prompt("How long would you like your password to be?")
@@ -29,7 +44,7 @@ var specialcharactersList = ["!", "@", "#", "$", "%", "^", "&", "*"]
 var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var uppercaseList = []
 
-var allLists = [numberList]
+var allLists = []
 
 for (var i = 0; i < lowercaseList.length; i++){
     uppercaseList[i] = lowercaseList[i].toUpperCase()
@@ -47,9 +62,25 @@ if (userWantsLowercase === true) {
     allLists.push(lowercaseList)
 }
 
-If (userWantsUppercase === true) {
+if (userWantsUppercase === true) {
+    allLists.push(uppercaseList)
+}
 
-  
+if (allLists.length ===0) {
+    allLists.push(numberList)
+}
+
+
+var generatedPassword = ""
+
+for (var i = 0; i < passwordLength; i++){
+    var randomList = grabRandomItem(allLists)
+    var randomCharacter = grabRandomItem(randomList)
+    generatedPassword += randomCharacter
+}
+
+return generatedPassword
+
 }
 
 // Write password to the #password input
@@ -57,9 +88,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
+  passwordText.value = password;  
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);}
