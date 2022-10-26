@@ -9,35 +9,35 @@ function randomInt(min, max) {
         max = min
         min = 0 
     }
-    var rando = Math.random()
-    return Math.floor(min * (1 - rando) + rando * max)
+
+    var rand = Math.random()
+    return Math.floor(min * (1 - rand) + rand * max)
 }
 
 function grabRandomItem(list) {
-    return list[randomInt(0, list.length)]
+    return list[randomInt(list.length)]
 }
 
 function generatePassword() {
 
-var userInput = prompt("How long would you like your password to be?")
+var userInput = window.prompt("How long would you like your password to be?")
 
 var passwordLength = parseInt(userInput)
 
-    if (isNaN(passwordLength)){
-
-        alert("Please enter a numeric value")
+    if (isNaN(passwordLength)) {
+        window.alert("Please enter a numeric value")
         return
-}
+    }   
 
-if (passwordLength < 8 ||passwordLength > 128) {
-    alert("Password length must be at least 8 characters and no more than 128 characters")
-    return
-}
+    if (passwordLength < 8 || passwordLength > 128) {
+        window.alert("Password length must be at least 8 characters and no more than 128 characters")
+        return
+    } 
 
-var userWantsNumbers = confirm("Would you like to include numbers in your password?")
-var userWantsSpecialCharacters = confirm("Would you like to include special characters in your password?")
-var userWantsLowercase = confirm("Would you like to include lowercase letters in your password?")
-var userWantsUppercase = confirm("Would you like to include uppercase letters in your password?")
+var userWantsNumbers = window.confirm("Would you like to include numbers in your password?")
+var userWantsSpecialCharacters = window.confirm("Would you like to include special characters in your password?")
+var userWantsLowercase = window.confirm("Would you like to include lowercase letters in your password?")
+var userWantsUppercase = window.confirm("Would you like to include uppercase letters in your password?")
 
 var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 var specialcharactersList = ["!", "@", "#", "$", "%", "^", "&", "*"]
@@ -66,21 +66,21 @@ if (userWantsUppercase === true) {
     allLists.push(uppercaseList)
 }
 
-if (allLists.length ===0) {
+if (allLists.length === 0) {
     allLists.push(numberList)
 }
 
-
 var generatedPassword = ""
 
-for (var i = 0; i < passwordLength; i++){
+for (var i = 0; i < passwordLength; i++) {
     var randomList = grabRandomItem(allLists)
     var randomCharacter = grabRandomItem(randomList)
     generatedPassword += randomCharacter
 }
 
-return generatedPassword
+//console.log(generatedPassword)   
 
+return generatedPassword
 }
 
 // Write password to the #password input
@@ -89,6 +89,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;  
+}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);}
+generateBtn.addEventListener("click", writePassword);
