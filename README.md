@@ -12,7 +12,7 @@ N/A
 
 ## Usage 
 
-Users can access my password generator by clicking on the following link: (INSERT DEPLOYED WEB URL)
+Users can access my password generator by clicking on the following link: https://lgenzone.github.io/password-generator/ 
 
 After navigating to my password generator webpage, click "Generate Password" to begin. The page will then ask a series of questions regarding criteria for the user's password. First the page will ask the user how long they'd like the password to be. Next, the page will ask questions regarding which characters to use. The user selects "Ok" for yes, and "Cancel" for no. After completing each of the required questions, the generated password will appear in the box above "Generate Password".
 
